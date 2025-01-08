@@ -31,13 +31,11 @@ public class Pre_process {
         StringBuilder stemmedText = new StringBuilder();
         String[] words = content.split("\\s+");
         PorterStemmer stemmer = new PorterStemmer();
-
         for (String word : words) {
             stemmer.setCurrent(word.toLowerCase());
             stemmer.stem();
             stemmedText.append(stemmer.getCurrent()).append(" ");
         }
-
         return stemmedText.toString().trim();
     }
 
