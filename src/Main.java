@@ -10,11 +10,11 @@ public class Main {
         String outputPath = "index.txt";
 
         try {
-            // Étape 1 : Lire le corpus
+
             System.out.println("Lecture du corpus...");
             Map<String, String> documents = Corpus_Reader.readCorpus(corpusPath);
 
-            // Étape 2 : Prétraiter les documents (suppression des stopwords et stemming)
+
             System.out.println("Prétraitement des documents...");
             Pre_process preProcessor = new Pre_process(stopwordsFilePath);
             for (Map.Entry<String, String> entry : documents.entrySet()) {
@@ -22,11 +22,9 @@ public class Main {
                 documents.put(entry.getKey(), processedText);
             }
 
-            // Étape 3 : Faire l'indexation TF-IDF
             System.out.println("Indexation TF-IDF...");
             Map<String, Map<String, Double>> index = Indexer.computeTFIDF(documents);
 
-            // Étape 4 : Afficher chaque document avec ses termes et leurs valeurs TF-IDF
             System.out.println("Affichage de l'index TF-IDF :");
             for (Map.Entry<String, Map<String, Double>> docEntry : index.entrySet()) {
                 System.out.println("Document : " + docEntry.getKey());

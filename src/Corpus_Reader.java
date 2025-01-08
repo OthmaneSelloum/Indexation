@@ -15,14 +15,12 @@ public class Corpus_Reader {
             throw new IllegalArgumentException("Invalid corpus path");
         }
 
-        // Parcours des fichiers dans le dossier racine
         for (File file : folder.listFiles()) {
-            if (file.isFile() && file.getName().endsWith(".txt")) { // Vérifier l'extension .txt
+            if (file.isFile() && file.getName().endsWith(".txt")) {
                 String content = Files.readString(file.toPath());
-                documents.put(file.getName(), content); // Ajoute le nom du fichier et son contenu
+                documents.put(file.getName(), content);
             }
         }
-
         return documents;
     }
 }

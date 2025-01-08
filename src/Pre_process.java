@@ -10,12 +10,10 @@ import org.tartarus.snowball.ext.PorterStemmer;
 public class Pre_process {
     private final Set<String> stopwords;
 
-    // Constructeur pour charger les stopwords depuis un fichier
     public Pre_process(String stopwordsFilePath) throws IOException {
         stopwords = new HashSet<>(Files.readAllLines(Path.of(stopwordsFilePath)));
     }
 
-    // Fonction pour supprimer les stopwords d'un texte
     public String removeStopwords(String content) {
         StringBuilder cleanedText = new StringBuilder();
         String[] words = content.split("\\s+");
@@ -29,7 +27,6 @@ public class Pre_process {
         return cleanedText.toString().trim();
     }
 
-    // Fonction pour appliquer le stemming sur un texte
     public String applyStemming(String content) {
         StringBuilder stemmedText = new StringBuilder();
         String[] words = content.split("\\s+");
@@ -44,7 +41,6 @@ public class Pre_process {
         return stemmedText.toString().trim();
     }
 
-    // Fonction principale pour combiner les deux étapes (optionnel)
     public String processText(String content) {
         String withoutStopwords = removeStopwords(content);
         return applyStemming(withoutStopwords);
